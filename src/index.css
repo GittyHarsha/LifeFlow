@@ -1,0 +1,1263 @@
+/* ===================================
+   COMMON BASE STYLES & TABLE STRUCTURE
+=================================== */
+
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Common table rules */
+table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 14px 10px;
+  text-align: center;
+  vertical-align: top;
+  font-size: 0.95rem;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  border: 1px solid;
+}
+th:first-child, td:first-child {
+  width: 120px;
+}
+td {
+  padding: 0;
+}
+
+/* Full-coverage textarea */
+.cell-textarea {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 80px;
+  border: none;
+  margin: 0;
+  padding: 8px;
+  box-sizing: border-box;
+  resize: vertical;
+  outline: none;
+  overflow-wrap: break-word;
+  white-space: pre-wrap;
+  font-weight: bold; /* Added for bolder text */
+}
+
+
+/* -----------------------------------
+   Theme 1: Material Design Inspired 
+   (theme-material)
+----------------------------------- */
+.theme-material {
+  font-family: Roboto, "Helvetica Neue", Arial, sans-serif;
+  background: #fafafa;
+  color: #333;
+}
+.theme-material form {
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  margin: 20px auto;
+  padding: 20px 30px;
+  max-width: 800px;
+  border: 1px solid #e0e0e0;
+}
+.theme-material .grid-container {
+  background: #fff;
+  border-radius: 8px;
+  margin: 20px auto;
+  max-width: 1200px;
+  padding: 20px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.05);
+  border: 1px solid #e0e0e0;
+}
+.theme-material table, 
+.theme-material th, 
+.theme-material td {
+  border-color: #e0e0e0;
+}
+.theme-material th {
+  background: #6200ee;
+  color: #fff;
+  font-weight: 500;
+}
+.theme-material td {
+  background: #fff;
+  color: #333;
+}
+.theme-material .cell-textarea {
+  background: #fafafa;
+  color: #333;
+}
+.theme-material .cell-textarea:focus {
+  border: 1px solid #6200ee;
+  box-shadow: 0 0 8px rgba(98, 0, 238, 0.5);
+}
+
+/* -----------------------------------
+   Theme 2: Dark Elegance / Luxury 
+   (theme-dark)
+----------------------------------- */
+.theme-dark {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background: #1c1c1e;
+  color: #f0f0f0;
+}
+.theme-dark form {
+  background: #2c2c2e;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+  margin: 20px auto;
+  padding: 20px 30px;
+  max-width: 800px;
+  border: 1px solid #3a3a3c;
+}
+.theme-dark .grid-container {
+  background: #2c2c2e;
+  border-radius: 10px;
+  margin: 20px auto;
+  max-width: 1200px;
+  padding: 20px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.5);
+  border: 1px solid #3a3a3c;
+}
+.theme-dark table, 
+.theme-dark th, 
+.theme-dark td {
+  border-color: #3a3a3c;
+}
+.theme-dark th {
+  background: #3a3a3c;
+  color: #c0a000;
+  font-weight: bold;
+}
+.theme-dark td {
+  background: #1c1c1e;
+  color: #f0f0f0;
+}
+.theme-dark .cell-textarea {
+  background: #2c2c2e;
+  color: #f0f0f0;
+}
+.theme-dark .cell-textarea:focus {
+  border: 1px solid #c0a000;
+  box-shadow: 0 0 8px rgba(192, 160, 0, 0.5);
+}
+
+/* -----------------------------------
+   Theme 3: Vintage Typewriter 
+   (theme-vintage)
+----------------------------------- */
+.theme-vintage {
+  font-family: 'Merriweather', serif;
+  background: #f7f1e3;
+  color: #3e3e3e;
+}
+.theme-vintage form {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  margin: 20px auto;
+  padding: 20px 30px;
+  max-width: 800px;
+  border: 1px solid #e0dcd3;
+}
+.theme-vintage .grid-container {
+  background: #fdfaf6;
+  border-radius: 8px;
+  margin: 20px auto;
+  max-width: 1200px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  border: 1px solid #e0dcd3;
+}
+.theme-vintage table, 
+.theme-vintage th, 
+.theme-vintage td {
+  border-color: #e0dcd3;
+}
+.theme-vintage th {
+  background: #f0e6d2;
+  color: #8d6748;
+  font-weight: bold;
+}
+.theme-vintage td {
+  background: #fff;
+  color: #3e3e3e;
+}
+.theme-vintage .cell-textarea {
+  background: #f9f4e9;
+  color: #3e3e3e;
+}
+.theme-vintage .cell-textarea:focus {
+  border: 1px solid #8d6748;
+  box-shadow: 0 0 8px rgba(141, 103, 72, 0.5);
+}
+
+/* -----------------------------------
+   Theme 4: Cyberpunk Neon 
+   (theme-cyberpunk)
+----------------------------------- */
+.theme-cyberpunk {
+  font-family: 'Roboto Mono', monospace;
+  background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+  color: #e0e0e0;
+}
+.theme-cyberpunk form {
+  background: rgba(20,20,30,0.85);
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.4);
+  margin: 20px auto;
+  padding: 20px 30px;
+  max-width: 800px;
+  border: 1px solid #3a3a60;
+}
+.theme-cyberpunk .grid-container {
+  background: rgba(10,10,20,0.9);
+  border-radius: 12px;
+  margin: 20px auto;
+  max-width: 1200px;
+  padding: 20px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+  border: 1px solid #3a3a60;
+}
+.theme-cyberpunk table, 
+.theme-cyberpunk th, 
+.theme-cyberpunk td {
+  border-color: #3a3a60;
+}
+.theme-cyberpunk th {
+  background: #1a1a2e;
+  color: #ff007f;
+}
+.theme-cyberpunk td {
+  background: #0f0c29;
+  color: #e0e0e0;
+}
+.theme-cyberpunk .cell-textarea {
+  background: #1a1a2e;
+  color: #e0e0e0;
+}
+.theme-cyberpunk .cell-textarea:focus {
+  border: 1px solid #ff007f;
+  box-shadow: 0 0 8px rgba(255,0,127,0.5);
+}
+
+/* -----------------------------------
+   Theme 5: Scandinavian Minimalist 
+   (theme-scandi)
+----------------------------------- */
+.theme-scandi {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  background: #fdfdfd;
+  color: #444;
+}
+.theme-scandi form {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  margin: 20px auto;
+  padding: 20px;
+  max-width: 600px;
+  border: 1px solid #eaeaea;
+}
+.theme-scandi .grid-container {
+  background: #fff;
+  border-radius: 10px;
+  margin: 20px auto;
+  max-width: 1000px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+  border: 1px solid #f0f0f0;
+}
+.theme-scandi table, 
+.theme-scandi th, 
+.theme-scandi td {
+  border-color: #f0f0f0;
+}
+.theme-scandi th {
+  background: #fafafa;
+  color: #0070f3;
+  font-weight: 500;
+}
+.theme-scandi td {
+  background: #fff;
+  color: #444;
+}
+.theme-scandi .cell-textarea {
+  background: #fafafa;
+  color: #444;
+}
+.theme-scandi .cell-textarea:focus {
+  border: 1px solid #0070f3;
+  box-shadow: 0 0 6px rgba(0,112,243,0.4);
+}
+
+/* -----------------------------------
+   Theme 6: Retro 80s 
+   (theme-retro)
+----------------------------------- */
+.theme-retro {
+  font-family: 'Courier New', monospace;
+  background: #000;
+  color: #0f0;
+}
+.theme-retro form {
+  background: #111;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.6);
+  margin: 20px auto;
+  padding: 20px;
+  max-width: 800px;
+  border: 1px solid #0f0;
+}
+.theme-retro .grid-container {
+  background: #000;
+  border-radius: 8px;
+  margin: 20px auto;
+  max-width: 1200px;
+  padding: 20px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.8);
+  border: 1px solid #0f0;
+}
+.theme-retro table, 
+.theme-retro th, 
+.theme-retro td {
+  border-color: #0f0;
+}
+.theme-retro th {
+  background: #000;
+  color: #0f0;
+}
+.theme-retro td {
+  background: #111;
+  color: #0f0;
+}
+.theme-retro .cell-textarea {
+  background: #000;
+  color: #0f0;
+}
+.theme-retro .cell-textarea:focus {
+  border: 1px solid #0f0;
+  box-shadow: 0 0 8px #0f0;
+}
+
+/* -----------------------------------
+   Theme 7: Pastel Dream 
+   (theme-pastel)
+----------------------------------- */
+.theme-pastel {
+  font-family: Arial, sans-serif;
+  background: #fefefe;
+  color: #555;
+}
+.theme-pastel form {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  margin: 20px auto;
+  padding: 20px;
+  max-width: 800px;
+  border: 1px solid #f0e5f6;
+}
+.theme-pastel .grid-container {
+  background: #fff;
+  border-radius: 10px;
+  margin: 20px auto;
+  max-width: 1200px;
+  padding: 20px;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.05);
+  border: 1px solid #f0e5f6;
+}
+.theme-pastel table, 
+.theme-pastel th, 
+.theme-pastel td {
+  border-color: #f0e5f6;
+}
+.theme-pastel th {
+  background: #ffecf0;
+  color: #ff6f91;
+  font-weight: 500;
+}
+.theme-pastel td {
+  background: #fff;
+  color: #555;
+}
+.theme-pastel .cell-textarea {
+  background: #fffbfa;
+  color: #555;
+}
+.theme-pastel .cell-textarea:focus {
+  border: 1px solid #ff6f91;
+  box-shadow: 0 0 6px rgba(255,111,145,0.4);
+}
+
+/* -----------------------------------
+   Theme 8: High Contrast 
+   (theme-highcontrast)
+----------------------------------- */
+.theme-highcontrast {
+  font-family: Arial, sans-serif;
+  background: #000;
+  color: #fff;
+}
+.theme-highcontrast form {
+  background: #000;
+  border-radius: 0;
+  box-shadow: none;
+  margin: 20px auto;
+  padding: 20px;
+  max-width: 800px;
+  border: 2px solid #fff;
+}
+.theme-highcontrast .grid-container {
+  background: #000;
+  border-radius: 0;
+  margin: 20px auto;
+  max-width: 1200px;
+  padding: 20px;
+  border: 2px solid #fff;
+}
+.theme-highcontrast table, 
+.theme-highcontrast th, 
+.theme-highcontrast td {
+  border-color: #fff;
+}
+.theme-highcontrast th {
+  background: #000;
+  color: #fff;
+  font-weight: bold;
+}
+.theme-highcontrast td {
+  background: #000;
+  color: #fff;
+}
+.theme-highcontrast .cell-textarea {
+  background: #000;
+  color: #fff;
+}
+.theme-highcontrast .cell-textarea:focus {
+  border: 1px solid #fff;
+  box-shadow: 0 0 8px #fff;
+}
+
+/* -----------------------------------
+   Theme 9: Aqua Wave 
+   (theme-aqua)
+----------------------------------- */
+.theme-aqua {
+  font-family: 'Segoe UI', sans-serif;
+  background: #e0f7fa;
+  color: #006064;
+}
+.theme-aqua form {
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+  margin: 20px auto;
+  padding: 20px;
+  max-width: 800px;
+  border: 1px solid #b2ebf2;
+}
+.theme-aqua .grid-container {
+  background: #e0f7fa;
+  border-radius: 10px;
+  margin: 20px auto;
+  max-width: 1200px;
+  padding: 20px;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.04);
+  border: 1px solid #b2ebf2;
+}
+.theme-aqua table, 
+.theme-aqua th, 
+.theme-aqua td {
+  border-color: #b2ebf2;
+}
+.theme-aqua th {
+  background: #00acc1;
+  color: #ffffff;
+  font-weight: 500;
+}
+.theme-aqua td {
+  background: #e0f7fa;
+  color: #006064;
+}
+.theme-aqua .cell-textarea {
+  background: #ffffff;
+  color: #006064;
+}
+.theme-aqua .cell-textarea:focus {
+  border: 1px solid #00acc1;
+  box-shadow: 0 0 8px rgba(0,172,193,0.5);
+}
+
+/* -----------------------------------
+   Theme 10: Futuristic Gradient 
+   (theme-futuristic)
+----------------------------------- */
+.theme-futuristic {
+  font-family: 'Orbitron', sans-serif;
+  background: linear-gradient(135deg, #0d47a1, #1976d2);
+  color: #e0e0e0;
+}
+.theme-futuristic form {
+  background: rgba(0,0,0,0.7);
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+  margin: 20px auto;
+  padding: 20px;
+  max-width: 800px;
+  border: 1px solid #1565c0;
+}
+.theme-futuristic .grid-container {
+  background: rgba(0,0,0,0.8);
+  border-radius: 10px;
+  margin: 20px auto;
+  max-width: 1200px;
+  padding: 20px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.6);
+  border: 1px solid #1565c0;
+}
+.theme-futuristic table, 
+.theme-futuristic th, 
+.theme-futuristic td {
+  border-color: #1565c0;
+}
+.theme-futuristic th {
+  background: #0d47a1;
+  color: #e0e0e0;
+  font-weight: bold;
+}
+.theme-futuristic td {
+  background: #1565c0;
+  color: #e0e0e0;
+}
+.theme-futuristic .cell-textarea {
+  background: rgba(0,0,0,0.8);
+  color: #e0e0e0;
+}
+.theme-futuristic .cell-textarea:focus {
+  border: 1px solid #0d47a1;
+  box-shadow: 0 0 8px rgba(13,71,161,0.6);
+}
+
+/* -----------------------------------
+   Theme 11: Neon Burst (theme-neon)
+----------------------------------- */
+.theme-neon {
+  font-family: 'Roboto Mono', monospace;
+  background: #000;
+  color: #0ff;
+}
+.theme-neon form {
+  background: rgba(0,0,0,0.85);
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0,255,255,0.3);
+  margin: 20px auto;
+  padding: 20px 30px;
+  max-width: 800px;
+  border: 1px solid #0ff;
+}
+.theme-neon .grid-container {
+  background: rgba(0,0,0,0.9);
+  border-radius: 12px;
+  margin: 20px auto;
+  max-width: 1200px;
+  padding: 20px;
+  box-shadow: 0 8px 24px rgba(0,255,255,0.3);
+  border: 1px solid #0ff;
+}
+.theme-neon table, 
+.theme-neon th, 
+.theme-neon td {
+  border-color: #0ff;
+}
+.theme-neon th {
+  background: #000;
+  color: #0ff;
+}
+.theme-neon td {
+  background: #000;
+  color: #0ff;
+}
+.theme-neon .cell-textarea {
+  background: #000;
+  color: #0ff;
+}
+.theme-neon .cell-textarea:focus {
+  border: 1px solid #0ff;
+  box-shadow: 0 0 8px #0ff;
+}
+
+/* -----------------------------------
+   Theme 12: Minimal Black & White (theme-minimal)
+----------------------------------- */
+.theme-minimal {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  background: #fff;
+  color: #000;
+}
+.theme-minimal form {
+  background: #fff;
+  border-radius: 0;
+  box-shadow: none;
+  margin: 20px auto;
+  padding: 20px;
+  max-width: 800px;
+  border: 1px solid #ccc;
+}
+.theme-minimal .grid-container {
+  background: #fff;
+  border-radius: 0;
+  margin: 20px auto;
+  max-width: 1200px;
+  padding: 20px;
+  border: 1px solid #ccc;
+}
+.theme-minimal table, 
+.theme-minimal th, 
+.theme-minimal td {
+  border-color: #ccc;
+}
+.theme-minimal th {
+  background: #f7f7f7;
+  color: #000;
+  font-weight: bold;
+}
+.theme-minimal td {
+  background: #fff;
+  color: #000;
+}
+.theme-minimal .cell-textarea {
+  background: #fff;
+  color: #000;
+}
+.theme-minimal .cell-textarea:focus {
+  border: 1px solid #000;
+  box-shadow: 0 0 6px rgba(0,0,0,0.5);
+}
+
+/* -----------------------------------
+   Theme 13: Industrial Metal (theme-industrial)
+----------------------------------- */
+.theme-industrial {
+  font-family: 'Roboto', sans-serif;
+  background: #2b2b2b;
+  color: #ddd;
+}
+.theme-industrial form {
+  background: #3a3a3a;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+  margin: 20px auto;
+  padding: 20px 30px;
+  max-width: 800px;
+  border: 1px solid #555;
+}
+.theme-industrial .grid-container {
+  background: #2b2b2b;
+  border-radius: 4px;
+  margin: 20px auto;
+  max-width: 1200px;
+  padding: 20px;
+  border: 1px solid #555;
+}
+.theme-industrial table, 
+.theme-industrial th, 
+.theme-industrial td {
+  border-color: #555;
+}
+.theme-industrial th {
+  background: #3a3a3a;
+  color: #ddd;
+}
+.theme-industrial td {
+  background: #2b2b2b;
+  color: #ddd;
+}
+.theme-industrial .cell-textarea {
+  background: #3a3a3a;
+  color: #ddd;
+}
+.theme-industrial .cell-textarea:focus {
+  border: 1px solid #ddd;
+  box-shadow: 0 0 8px rgba(221,221,221,0.5);
+}
+
+/* -----------------------------------
+   Theme 14: Pastel Soft (theme-pastel2)
+----------------------------------- */
+.theme-pastel2 {
+  font-family: 'Arial', sans-serif;
+  background: #fffafc;
+  color: #555;
+}
+.theme-pastel2 form {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+  margin: 20px auto;
+  padding: 20px;
+  max-width: 800px;
+  border: 1px solid #f3e5f5;
+}
+.theme-pastel2 .grid-container {
+  background: #fff;
+  border-radius: 10px;
+  margin: 20px auto;
+  max-width: 1200px;
+  padding: 20px;
+  border: 1px solid #f3e5f5;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.04);
+}
+.theme-pastel2 table, 
+.theme-pastel2 th, 
+.theme-pastel2 td {
+  border-color: #f3e5f5;
+}
+.theme-pastel2 th {
+  background: #fce4ec;
+  color: #d81b60;
+  font-weight: 500;
+}
+.theme-pastel2 td {
+  background: #fff;
+  color: #555;
+}
+.theme-pastel2 .cell-textarea {
+  background: #fff;
+  color: #555;
+}
+.theme-pastel2 .cell-textarea:focus {
+  border: 1px solid #d81b60;
+  box-shadow: 0 0 6px rgba(216,27,96,0.4);
+}
+
+/* -----------------------------------
+   Theme 15: Geometric (theme-geometric)
+----------------------------------- */
+.theme-geometric {
+  font-family: 'Montserrat', sans-serif;
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+.theme-geometric form {
+  background: #ffffff;
+  border-radius: 8px;
+  margin: 20px auto;
+  padding: 20px 30px;
+  max-width: 800px;
+  border: 1px solid #c8e6c9;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+.theme-geometric .grid-container {
+  background: #e8f5e9;
+  border-radius: 8px;
+  margin: 20px auto;
+  max-width: 1200px;
+  padding: 20px;
+  border: 1px solid #c8e6c9;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.05);
+}
+.theme-geometric table, 
+.theme-geometric th, 
+.theme-geometric td {
+  border-color: #c8e6c9;
+}
+.theme-geometric th {
+  background: #a5d6a7;
+  color: #1b5e20;
+  font-weight: 500;
+}
+.theme-geometric td {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+.theme-geometric .cell-textarea {
+  background: #ffffff;
+  color: #2e7d32;
+}
+.theme-geometric .cell-textarea:focus {
+  border: 1px solid #1b5e20;
+  box-shadow: 0 0 6px rgba(27,94,32,0.5);
+}
+
+/* -----------------------------------
+   Theme 16: Organic Earth (theme-organic)
+----------------------------------- */
+.theme-organic {
+  font-family: 'Georgia', serif;
+  background: #fdf6e3;
+  color: #5d4037;
+}
+.theme-organic form {
+  background: #fff;
+  border-radius: 8px;
+  margin: 20px auto;
+  padding: 20px 30px;
+  max-width: 800px;
+  border: 1px solid #d7ccc8;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+}
+.theme-organic .grid-container {
+  background: #fdf6e3;
+  border-radius: 8px;
+  margin: 20px auto;
+  max-width: 1200px;
+  padding: 20px;
+  border: 1px solid #d7ccc8;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.04);
+}
+.theme-organic table, 
+.theme-organic th, 
+.theme-organic td {
+  border-color: #d7ccc8;
+}
+.theme-organic th {
+  background: #bcaaa4;
+  color: #5d4037;
+  font-weight: bold;
+}
+.theme-organic td {
+  background: #fdf6e3;
+  color: #5d4037;
+}
+.theme-organic .cell-textarea {
+  background: #fff;
+  color: #5d4037;
+}
+.theme-organic .cell-textarea:focus {
+  border: 1px solid #5d4037;
+  box-shadow: 0 0 6px rgba(93,64,55,0.5);
+}
+
+/* -----------------------------------
+   Theme 17: Space Odyssey (theme-space)
+----------------------------------- */
+.theme-space {
+  font-family: 'Orbitron', sans-serif;
+  background: #0d0d2b;
+  color: #e0e0e0;
+}
+.theme-space form {
+  background: rgba(0,0,0,0.7);
+  border-radius: 10px;
+  margin: 20px auto;
+  padding: 20px;
+  max-width: 800px;
+  border: 1px solid #14144a;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+}
+.theme-space .grid-container {
+  background: #0d0d2b;
+  border-radius: 10px;
+  margin: 20px auto;
+  max-width: 1200px;
+  padding: 20px;
+  border: 1px solid #14144a;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.6);
+}
+.theme-space table, 
+.theme-space th, 
+.theme-space td {
+  border-color: #14144a;
+}
+.theme-space th {
+  background: #0d0d2b;
+  color: #e0e0e0;
+  font-weight: bold;
+}
+.theme-space td {
+  background: #0d0d2b;
+  color: #e0e0e0;
+}
+.theme-space .cell-textarea {
+  background: #14144a;
+  color: #e0e0e0;
+}
+.theme-space .cell-textarea:focus {
+  border: 1px solid #0d0d2b;
+  box-shadow: 0 0 8px rgba(13,13,43,0.6);
+}
+
+/* -----------------------------------
+   Theme 18: Forest Whisper (theme-forest)
+----------------------------------- */
+.theme-forest {
+  font-family: 'Georgia', serif;
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+.theme-forest form {
+  background: #ffffff;
+  border-radius: 10px;
+  margin: 20px auto;
+  padding: 20px;
+  max-width: 800px;
+  border: 1px solid #c8e6c9;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+.theme-forest .grid-container {
+  background: #e8f5e9;
+  border-radius: 10px;
+  margin: 20px auto;
+  max-width: 1200px;
+  padding: 20px;
+  border: 1px solid #c8e6c9;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.05);
+}
+.theme-forest table, 
+.theme-forest th, 
+.theme-forest td {
+  border-color: #c8e6c9;
+}
+.theme-forest th {
+  background: #a5d6a7;
+  color: #1b5e20;
+  font-weight: 500;
+}
+.theme-forest td {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+.theme-forest .cell-textarea {
+  background: #ffffff;
+  color: #2e7d32;
+}
+.theme-forest .cell-textarea:focus {
+  border: 1px solid #1b5e20;
+  box-shadow: 0 0 8px rgba(27,94,32,0.5);
+}
+
+/* -----------------------------------
+   Theme 19: Sunset Glow (theme-sunset)
+----------------------------------- */
+.theme-sunset {
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+  color: #4a4a4a;
+}
+.theme-sunset form {
+  background: rgba(255,255,255,0.9);
+  border-radius: 10px;
+  margin: 20px auto;
+  padding: 20px;
+  max-width: 800px;
+  border: 1px solid #ffb3ab;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+.theme-sunset .grid-container {
+  background: rgba(255,255,255,0.95);
+  border-radius: 10px;
+  margin: 20px auto;
+  max-width: 1200px;
+  padding: 20px;
+  border: 1px solid #ffb3ab;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.08);
+}
+.theme-sunset table, 
+.theme-sunset th, 
+.theme-sunset td {
+  border-color: #ffb3ab;
+}
+.theme-sunset th {
+  background: #ff9a9e;
+  color: #4a4a4a;
+  font-weight: bold;
+}
+.theme-sunset td {
+  background: #fff;
+  color: #4a4a4a;
+}
+.theme-sunset .cell-textarea {
+  background: #fff;
+  color: #4a4a4a;
+}
+.theme-sunset .cell-textarea:focus {
+  border: 1px solid #ff9a9e;
+  box-shadow: 0 0 8px rgba(255,154,158,0.5);
+}
+
+/* -----------------------------------
+   Theme 20: Ocean Breeze (theme-ocean)
+----------------------------------- */
+.theme-ocean {
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #2193b0, #6dd5ed);
+  color: #ffffff;
+}
+.theme-ocean form {
+  background: rgba(255,255,255,0.9);
+  border-radius: 10px;
+  margin: 20px auto;
+  padding: 20px;
+  max-width: 800px;
+  border: 1px solid #a0d8ef;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+.theme-ocean .grid-container {
+  background: rgba(255,255,255,0.95);
+  border-radius: 10px;
+  margin: 20px auto;
+  max-width: 1200px;
+  padding: 20px;
+  border: 1px solid #a0d8ef;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.08);
+}
+.theme-ocean table, 
+.theme-ocean th, 
+.theme-ocean td {
+  border-color: #a0d8ef;
+}
+.theme-ocean th {
+  background: #2193b0;
+  color: #ffffff;
+  font-weight: bold;
+}
+.theme-ocean td {
+  background: #6dd5ed;
+  color: #ffffff;
+}
+.theme-ocean .cell-textarea {
+  background: rgba(255,255,255,0.8);
+  color: #2193b0;
+}
+.theme-ocean .cell-textarea:focus {
+  border: 1px solid #2193b0;
+  box-shadow: 0 0 8px rgba(33,147,176,0.5);
+}
+
+/* -----------------------------------
+   Common styles for Project Header & Delete Button
+----------------------------------- */
+th.project-header {
+  position: relative;
+}
+th.project-header span {
+  cursor: pointer;
+}
+th.project-header button.delete-project {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  background: #ff4d4f;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  cursor: pointer;
+  padding: 2px 6px;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+th.project-header:hover button.delete-project {
+  opacity: 1;
+}
+
+/* -----------------------------------
+   COMMON BUTTON BASE STYLE
+----------------------------------- */
+button {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* -----------------------------------
+   THEME-BY-THEME BUTTON OVERRIDES
+----------------------------------- */
+
+/* 1) Material */
+.theme-material button {
+  background: #6200ee;
+  color: #fff;
+}
+.theme-material button:hover {
+  background: #4500b6;
+}
+
+/* 2) Dark Elegance */
+.theme-dark button {
+  background: #c0a000;
+  color: #1c1c1e;
+}
+.theme-dark button:hover {
+  background: #a68c00;
+}
+
+/* 3) Vintage Typewriter */
+.theme-vintage button {
+  background: #8d6748;
+  color: #fff;
+}
+.theme-vintage button:hover {
+  background: #755738;
+}
+
+/* 4) Cyberpunk Neon */
+.theme-cyberpunk button {
+  background: #ff007f;
+  color: #fff;
+}
+.theme-cyberpunk button:hover {
+  background: #d60070;
+}
+
+/* 5) Scandinavian Minimalist */
+.theme-scandi button {
+  background: #0070f3;
+  color: #fff;
+}
+.theme-scandi button:hover {
+  background: #005bb5;
+}
+
+/* 6) Retro 80s */
+.theme-retro button {
+  background: #0f0;
+  color: #000;
+}
+.theme-retro button:hover {
+  background: #0c0;
+}
+
+/* 7) Pastel Dream */
+.theme-pastel button {
+  background: #ff6f91;
+  color: #fff;
+}
+.theme-pastel button:hover {
+  background: #ff5a7d;
+}
+
+/* 8) High Contrast */
+.theme-highcontrast button {
+  background: #fff;
+  color: #000;
+  border: 2px solid #fff;
+}
+.theme-highcontrast button:hover {
+  background: #000;
+  color: #fff;
+}
+
+/* 9) Aqua Wave */
+.theme-aqua button {
+  background: #00acc1;
+  color: #fff;
+}
+.theme-aqua button:hover {
+  background: #008b9f;
+}
+
+/* 10) Futuristic Gradient */
+.theme-futuristic button {
+  background: #0d47a1;
+  color: #e0e0e0;
+}
+.theme-futuristic button:hover {
+  background: #0b3c8d;
+}
+
+/* 11) Neon Burst */
+.theme-neon button {
+  background: #0ff;
+  color: #000;
+}
+.theme-neon button:hover {
+  background: #0cc;
+}
+
+/* 12) Minimal Black & White */
+.theme-minimal button {
+  background: #000;
+  color: #fff;
+}
+.theme-minimal button:hover {
+  background: #333;
+}
+
+/* 13) Industrial Metal */
+.theme-industrial button {
+  background: #ddd;
+  color: #2b2b2b;
+}
+.theme-industrial button:hover {
+  background: #bbb;
+}
+
+/* 14) Pastel Soft (pastel2) */
+.theme-pastel2 button {
+  background: #d81b60;
+  color: #fff;
+}
+.theme-pastel2 button:hover {
+  background: #b71550;
+}
+
+/* 15) Geometric */
+.theme-geometric button {
+  background: #1b5e20;
+  color: #fff;
+}
+.theme-geometric button:hover {
+  background: #144516;
+}
+
+/* 16) Organic Earth */
+.theme-organic button {
+  background: #5d4037;
+  color: #fff;
+}
+.theme-organic button:hover {
+  background: #4b332e;
+}
+
+/* 17) Space Odyssey */
+.theme-space button {
+  background: #14144a;
+  color: #e0e0e0;
+}
+.theme-space button:hover {
+  background: #10103a;
+}
+
+/* 18) Forest Whisper */
+.theme-forest button {
+  background: #2e7d32;
+  color: #fff;
+}
+.theme-forest button:hover {
+  background: #27662a;
+}
+
+/* 19) Sunset Glow */
+.theme-sunset button {
+  background: #ff9a9e;
+  color: #4a4a4a;
+}
+.theme-sunset button:hover {
+  background: #ff8387;
+}
+
+/* 20) Ocean Breeze */
+.theme-ocean button {
+  background: #2193b0;
+  color: #fff;
+}
+.theme-ocean button:hover {
+  background: #16718b;
+}
