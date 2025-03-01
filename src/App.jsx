@@ -28,7 +28,7 @@ const themes = [
 
 function App() {
   const [filterRange, setFilterRange] = useState({ minDate: '', maxDate: '' });
-  const [themeIndex, setThemeIndex] = useState(0);
+  const [themeIndex, setThemeIndex] = useState(Math.floor(Math.random() * themes.length));
 
   const handleFilter = (range) => {
     setFilterRange(range);

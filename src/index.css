@@ -1261,3 +1261,460 @@ button {
 .theme-ocean button:hover {
   background: #16718b;
 }
+.action-button {
+  background: none;   /* No background */
+  border: none;       /* No border */
+  color: inherit;     /* Use the text color from the parent (e.g. theme) */
+  padding: 0;         /* Remove extra spacing */
+  margin: 0;
+  cursor: pointer;
+  outline: none;      /* Prevent outline on focus (if desired) */
+  /* Optionally add a subtle hover effect */
+}
+.action-button:hover {
+  opacity: 0.8;
+}
+th.project-header span {
+  margin-right: 0.5rem;
+}
+
+.action-button {
+  background: none;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  padding: 0;
+  margin-left: 0.5rem; /* space between each icon and the previous element */
+  outline: none;
+}
+
+.action-button:hover {
+  opacity: 0.8;
+}
+/* For all action buttons, remove backgrounds/borders, etc. */
+.action-button {
+  background: none;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  outline: none;
+  font-size: 0.75rem;
+  /* Add margin if you want spacing around icons */
+  margin-left: 0.5rem;
+}
+
+/* By default, the archive button is hidden */
+.action-button.archive-project {
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+/* On hover over the project header cell, show the archive button */
+th.project-header:hover .archive-project {
+  opacity: 1;
+}
+
+/* The delete-project and goals-project can remain visible at all times */
+.action-button.delete-project,
+.action-button.goals-project {
+  opacity: 1; /* Always visible */
+}
+/* ----- Scrollbar Styling for Theme 1: Material (theme-material) ----- */
+.theme-material ::-webkit-scrollbar {
+  width: 8px;
+}
+.theme-material ::-webkit-scrollbar-track {
+  background: #f0f0f0;
+  border-radius: 4px;
+}
+.theme-material ::-webkit-scrollbar-thumb {
+  background-color: #6200ee;
+  border-radius: 4px;
+}
+.theme-material ::-webkit-scrollbar-thumb:hover {
+  background-color: #4500b6;
+}
+.theme-material {
+  scrollbar-color: #6200ee #f0f0f0;
+  scrollbar-width: thin;
+}
+
+/* ----- Theme 2: Dark Elegance (theme-dark) ----- */
+.theme-dark ::-webkit-scrollbar {
+  width: 8px;
+}
+.theme-dark ::-webkit-scrollbar-track {
+  background: #3a3a3c;
+  border-radius: 4px;
+}
+.theme-dark ::-webkit-scrollbar-thumb {
+  background-color: #c0a000;
+  border-radius: 4px;
+}
+.theme-dark ::-webkit-scrollbar-thumb:hover {
+  background-color: #a68c00;
+}
+.theme-dark {
+  scrollbar-color: #c0a000 #3a3a3c;
+  scrollbar-width: thin;
+}
+
+/* ----- Theme 3: Vintage Typewriter (theme-vintage) ----- */
+.theme-vintage ::-webkit-scrollbar {
+  width: 8px;
+}
+.theme-vintage ::-webkit-scrollbar-track {
+  background: #e0dcd3;
+  border-radius: 4px;
+}
+.theme-vintage ::-webkit-scrollbar-thumb {
+  background-color: #8d6748;
+  border-radius: 4px;
+}
+.theme-vintage ::-webkit-scrollbar-thumb:hover {
+  background-color: #755738;
+}
+.theme-vintage {
+  scrollbar-color: #8d6748 #e0dcd3;
+  scrollbar-width: thin;
+}
+
+/* ----- Theme 4: Cyberpunk Neon (theme-cyberpunk) ----- */
+.theme-cyberpunk ::-webkit-scrollbar {
+  width: 8px;
+}
+.theme-cyberpunk ::-webkit-scrollbar-track {
+  background: #3a3a60;
+  border-radius: 4px;
+}
+.theme-cyberpunk ::-webkit-scrollbar-thumb {
+  background-color: #ff007f;
+  border-radius: 4px;
+}
+.theme-cyberpunk ::-webkit-scrollbar-thumb:hover {
+  background-color: #d60070;
+}
+.theme-cyberpunk {
+  scrollbar-color: #ff007f #3a3a60;
+  scrollbar-width: thin;
+}
+
+/* ----- Theme 5: Scandinavian Minimalist (theme-scandi) ----- */
+.theme-scandi ::-webkit-scrollbar {
+  width: 8px;
+}
+.theme-scandi ::-webkit-scrollbar-track {
+  background: #f7f7f7;
+  border-radius: 4px;
+}
+.theme-scandi ::-webkit-scrollbar-thumb {
+  background-color: #0070f3;
+  border-radius: 4px;
+}
+.theme-scandi ::-webkit-scrollbar-thumb:hover {
+  background-color: #005bb5;
+}
+.theme-scandi {
+  scrollbar-color: #0070f3 #f7f7f7;
+  scrollbar-width: thin;
+}
+
+/* ----- Theme 6: Retro 80s (theme-retro) ----- */
+.theme-retro ::-webkit-scrollbar {
+  width: 8px;
+}
+.theme-retro ::-webkit-scrollbar-track {
+  background: #333;
+  border-radius: 4px;
+}
+.theme-retro ::-webkit-scrollbar-thumb {
+  background-color: #0f0;
+  border-radius: 4px;
+}
+.theme-retro ::-webkit-scrollbar-thumb:hover {
+  background-color: #0c0;
+}
+.theme-retro {
+  scrollbar-color: #0f0 #333;
+  scrollbar-width: thin;
+}
+
+/* ----- Theme 7: Pastel Dream (theme-pastel) ----- */
+.theme-pastel ::-webkit-scrollbar {
+  width: 8px;
+}
+.theme-pastel ::-webkit-scrollbar-track {
+  background: #f0e5f6;
+  border-radius: 4px;
+}
+.theme-pastel ::-webkit-scrollbar-thumb {
+  background-color: #ff6f91;
+  border-radius: 4px;
+}
+.theme-pastel ::-webkit-scrollbar-thumb:hover {
+  background-color: #ff5a7d;
+}
+.theme-pastel {
+  scrollbar-color: #ff6f91 #f0e5f6;
+  scrollbar-width: thin;
+}
+
+/* ----- Theme 8: High Contrast (theme-highcontrast) ----- */
+.theme-highcontrast ::-webkit-scrollbar {
+  width: 8px;
+}
+.theme-highcontrast ::-webkit-scrollbar-track {
+  background: #000;
+  border-radius: 4px;
+}
+.theme-highcontrast ::-webkit-scrollbar-thumb {
+  background-color: #fff;
+  border-radius: 4px;
+}
+.theme-highcontrast ::-webkit-scrollbar-thumb:hover {
+  background-color: #ccc;
+}
+.theme-highcontrast {
+  scrollbar-color: #fff #000;
+  scrollbar-width: thin;
+}
+
+/* ----- Theme 9: Aqua Wave (theme-aqua) ----- */
+.theme-aqua ::-webkit-scrollbar {
+  width: 8px;
+}
+.theme-aqua ::-webkit-scrollbar-track {
+  background: #b2ebf2;
+  border-radius: 4px;
+}
+.theme-aqua ::-webkit-scrollbar-thumb {
+  background-color: #00acc1;
+  border-radius: 4px;
+}
+.theme-aqua ::-webkit-scrollbar-thumb:hover {
+  background-color: #008b9f;
+}
+.theme-aqua {
+  scrollbar-color: #00acc1 #b2ebf2;
+  scrollbar-width: thin;
+}
+
+/* ----- Theme 10: Futuristic Gradient (theme-futuristic) ----- */
+.theme-futuristic ::-webkit-scrollbar {
+  width: 8px;
+}
+.theme-futuristic ::-webkit-scrollbar-track {
+  background: #1565c0;
+  border-radius: 4px;
+}
+.theme-futuristic ::-webkit-scrollbar-thumb {
+  background-color: #0d47a1;
+  border-radius: 4px;
+}
+.theme-futuristic ::-webkit-scrollbar-thumb:hover {
+  background-color: #0b3c8d;
+}
+.theme-futuristic {
+  scrollbar-color: #0d47a1 #1565c0;
+  scrollbar-width: thin;
+}
+
+/* ----- Theme 11: Neon Burst (theme-neon) ----- */
+.theme-neon ::-webkit-scrollbar {
+  width: 8px;
+}
+.theme-neon ::-webkit-scrollbar-track {
+  background: #333;
+  border-radius: 4px;
+}
+.theme-neon ::-webkit-scrollbar-thumb {
+  background-color: #0ff;
+  border-radius: 4px;
+}
+.theme-neon ::-webkit-scrollbar-thumb:hover {
+  background-color: #0cc;
+}
+.theme-neon {
+  scrollbar-color: #0ff #333;
+  scrollbar-width: thin;
+}
+
+/* ----- Theme 12: Minimal Black & White (theme-minimal) ----- */
+.theme-minimal ::-webkit-scrollbar {
+  width: 8px;
+}
+.theme-minimal ::-webkit-scrollbar-track {
+  background: #ccc;
+  border-radius: 4px;
+}
+.theme-minimal ::-webkit-scrollbar-thumb {
+  background-color: #000;
+  border-radius: 4px;
+}
+.theme-minimal ::-webkit-scrollbar-thumb:hover {
+  background-color: #333;
+}
+.theme-minimal {
+  scrollbar-color: #000 #ccc;
+  scrollbar-width: thin;
+}
+
+/* ----- Theme 13: Industrial Metal (theme-industrial) ----- */
+.theme-industrial ::-webkit-scrollbar {
+  width: 8px;
+}
+.theme-industrial ::-webkit-scrollbar-track {
+  background: #555;
+  border-radius: 4px;
+}
+.theme-industrial ::-webkit-scrollbar-thumb {
+  background-color: #ddd;
+  border-radius: 4px;
+}
+.theme-industrial ::-webkit-scrollbar-thumb:hover {
+  background-color: #bbb;
+}
+.theme-industrial {
+  scrollbar-color: #ddd #555;
+  scrollbar-width: thin;
+}
+
+/* ----- Theme 14: Pastel Soft (theme-pastel2) ----- */
+.theme-pastel2 ::-webkit-scrollbar {
+  width: 8px;
+}
+.theme-pastel2 ::-webkit-scrollbar-track {
+  background: #f3e5f5;
+  border-radius: 4px;
+}
+.theme-pastel2 ::-webkit-scrollbar-thumb {
+  background-color: #d81b60;
+  border-radius: 4px;
+}
+.theme-pastel2 ::-webkit-scrollbar-thumb:hover {
+  background-color: #b71550;
+}
+.theme-pastel2 {
+  scrollbar-color: #d81b60 #f3e5f5;
+  scrollbar-width: thin;
+}
+
+/* ----- Theme 15: Geometric (theme-geometric) ----- */
+.theme-geometric ::-webkit-scrollbar {
+  width: 8px;
+}
+.theme-geometric ::-webkit-scrollbar-track {
+  background: #c8e6c9;
+  border-radius: 4px;
+}
+.theme-geometric ::-webkit-scrollbar-thumb {
+  background-color: #1b5e20;
+  border-radius: 4px;
+}
+.theme-geometric ::-webkit-scrollbar-thumb:hover {
+  background-color: #144516;
+}
+.theme-geometric {
+  scrollbar-color: #1b5e20 #c8e6c9;
+  scrollbar-width: thin;
+}
+
+/* ----- Theme 16: Organic Earth (theme-organic) ----- */
+.theme-organic ::-webkit-scrollbar {
+  width: 8px;
+}
+.theme-organic ::-webkit-scrollbar-track {
+  background: #d7ccc8;
+  border-radius: 4px;
+}
+.theme-organic ::-webkit-scrollbar-thumb {
+  background-color: #5d4037;
+  border-radius: 4px;
+}
+.theme-organic ::-webkit-scrollbar-thumb:hover {
+  background-color: #4b332e;
+}
+.theme-organic {
+  scrollbar-color: #5d4037 #d7ccc8;
+  scrollbar-width: thin;
+}
+
+/* ----- Theme 17: Space Odyssey (theme-space) ----- */
+.theme-space ::-webkit-scrollbar {
+  width: 8px;
+}
+.theme-space ::-webkit-scrollbar-track {
+  background: #14144a;
+  border-radius: 4px;
+}
+.theme-space ::-webkit-scrollbar-thumb {
+  background-color: #14144a;
+  border-radius: 4px;
+}
+.theme-space ::-webkit-scrollbar-thumb:hover {
+  background-color: #10103a;
+}
+.theme-space {
+  scrollbar-color: #14144a #14144a;
+  scrollbar-width: thin;
+}
+
+/* ----- Theme 18: Forest Whisper (theme-forest) ----- */
+.theme-forest ::-webkit-scrollbar {
+  width: 8px;
+}
+.theme-forest ::-webkit-scrollbar-track {
+  background: #c8e6c9;
+  border-radius: 4px;
+}
+.theme-forest ::-webkit-scrollbar-thumb {
+  background-color: #2e7d32;
+  border-radius: 4px;
+}
+.theme-forest ::-webkit-scrollbar-thumb:hover {
+  background-color: #27662a;
+}
+.theme-forest {
+  scrollbar-color: #2e7d32 #c8e6c9;
+  scrollbar-width: thin;
+}
+
+/* ----- Theme 19: Sunset Glow (theme-sunset) ----- */
+.theme-sunset ::-webkit-scrollbar {
+  width: 8px;
+}
+.theme-sunset ::-webkit-scrollbar-track {
+  background: #ffb3ab;
+  border-radius: 4px;
+}
+.theme-sunset ::-webkit-scrollbar-thumb {
+  background-color: #ff9a9e;
+  border-radius: 4px;
+}
+.theme-sunset ::-webkit-scrollbar-thumb:hover {
+  background-color: #ff8387;
+}
+.theme-sunset {
+  scrollbar-color: #ff9a9e #ffb3ab;
+  scrollbar-width: thin;
+}
+
+/* ----- Theme 20: Ocean Breeze (theme-ocean) ----- */
+.theme-ocean ::-webkit-scrollbar {
+  width: 8px;
+}
+.theme-ocean ::-webkit-scrollbar-track {
+  background: #a0d8ef;
+  border-radius: 4px;
+}
+.theme-ocean ::-webkit-scrollbar-thumb {
+  background-color: #2193b0;
+  border-radius: 4px;
+}
+.theme-ocean ::-webkit-scrollbar-thumb:hover {
+  background-color: #16718b;
+}
+.theme-ocean {
+  scrollbar-color: #2193b0 #a0d8ef;
+  scrollbar-width: thin;
+}
