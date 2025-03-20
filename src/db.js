@@ -39,3 +39,27 @@ export async function saveGrid(gridData) {
     console.error("Error saving grid:", error);
   }
 }
+
+// New functions for Task Tracker
+
+export async function loadTasks() {
+  try {
+    const db = await initDB();
+    const record = await db.get(STORE_NAME, 'tasks');
+    console.log("loadTasks: record", record);
+    return record ? record.data : [];
+  } catch (error) {
+    console.error("Error loading tasks:", error);
+    return [];
+  }
+}
+
+export async function saveTasks(tasksData) {
+  try {
+    const db = await initDB();
+    await db.put(STORE_NAME, { id: 'tasks', data: tasksData });
+    console.log("saveTasks: tasks saved", tasksData);
+  } catch (error) {
+    console.error("Error saving tasks:", error);
+  }
+}
