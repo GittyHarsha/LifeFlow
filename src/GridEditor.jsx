@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
+// GridEditor.jsx
+import React, { useEffect, useState, useRef } from 'react';
 import { FaTrash, FaArchive, FaBullseye } from 'react-icons/fa';
-import { loadGrid, saveGrid } from './db';
+import { loadGrid, saveGrid, loadHourlyJournal, saveHourlyJournal } from './db';
 
-// Default projects: now as objects with a name and archived flag.
 const DEFAULT_PROJECTS = [
   { name: 'main', archived: false },
   { name: 'health', archived: false },
@@ -10,10 +10,6 @@ const DEFAULT_PROJECTS = [
   { name: 'finance', archived: false }
 ];
 
-/**
- * Generate an array of Date objects in descending order (newest first)
- * for the given date range or the last 10 days by default.
- */
 function generateDaysInRange(minDate, maxDate, defaultDays = 10) {
   if (!minDate && !maxDate) {
     const today = new Date();
@@ -47,9 +43,6 @@ function generateDaysInRange(minDate, maxDate, defaultDays = 10) {
   return days.sort((a, b) => b - a);
 }
 
-/**
- * Format a Date object as YYYY-MM-DD
- */
 function formatDate(d) {
   const yyyy = d.getFullYear();
   const mm = String(d.getMonth() + 1).padStart(2, '0');
@@ -57,9 +50,6 @@ function formatDate(d) {
   return `${yyyy}-${mm}-${dd}`;
 }
 
-/**
- * Overlay (modal) component for editing goals of a project.
- */
 function GoalsOverlay({ project, goals, onClose, onAddGoal, onRemoveGoal }) {
   const [newGoal, setNewGoal] = useState('');
 
@@ -130,20 +120,12 @@ function GoalsOverlay({ project, goals, onClose, onAddGoal, onRemoveGoal }) {
   );
 }
 
-/**
- * Main GridEditor component.
- */
 export default function GridEditor({ minDate, maxDate }) {
-  // Grid data includes projects, cells, and goals.
-  const [grid, setGrid] = useState({
-    projects: DEFAULT_PROJECTS,
-    cells: {},
-    goals: {} // { projectName: [ 'Goal1', 'Goal2', ... ] }
-  });
+  const [grid, setGrid] = useState({ projects: DEFAULT_PROJECTS, cells: {}, goals: {} });
   const [days, setDays] = useState([]);
   const [activeGoalsProj, setActiveGoalsProj] = useState(null);
+  const [expandedDay, setExpandedDay] = useState(null);
 
-  // Load grid data from IndexedDB on mount.
   useEffect(() => {
     (async () => {
       const data = await loadGrid();
@@ -154,23 +136,18 @@ export default function GridEditor({ minDate, maxDate }) {
     })();
   }, []);
 
-  // Regenerate days array whenever filter changes.
   useEffect(() => {
     const dayObjs = generateDaysInRange(minDate, maxDate, 10);
     setDays(dayObjs.map(formatDate));
   }, [minDate, maxDate]);
 
-  // Save grid data to IndexedDB whenever grid changes.
   useEffect(() => {
     saveGrid(grid).catch(console.error);
   }, [grid]);
 
-  // Active (non-archived) projects.
   const activeProjects = grid.projects.filter((p) => !p.archived);
-  // Archived projects.
   const archivedProjects = grid.projects.filter((p) => p.archived);
 
-  // Update cell text.
   const handleCellChange = (day, projName, value) => {
     setGrid((prev) => ({
       ...prev,
@@ -181,7 +158,6 @@ export default function GridEditor({ minDate, maxDate }) {
     }));
   };
 
-  // Add a new project (active by default).
   const handleAddProject = () => {
     const newProj = prompt('Enter new project name:');
     if (!newProj) return;
@@ -196,7 +172,6 @@ export default function GridEditor({ minDate, maxDate }) {
     }));
   };
 
-  // Delete a project.
   const handleDeleteProject = (projName) => {
     if (projName.toLowerCase() === 'main') {
       alert('Cannot delete the main project.');
@@ -217,7 +192,6 @@ export default function GridEditor({ minDate, maxDate }) {
     });
   };
 
-  // Archive a project.
   const handleArchiveProject = (projName) => {
     if (projName.toLowerCase() === 'main') {
       alert('Cannot archive the main project.');
@@ -231,7 +205,6 @@ export default function GridEditor({ minDate, maxDate }) {
     }));
   };
 
-  // Unarchive a project.
   const handleUnarchiveProject = (projName) => {
     setGrid((prev) => ({
       ...prev,
@@ -241,15 +214,14 @@ export default function GridEditor({ minDate, maxDate }) {
     }));
   };
 
-  // =============== GOALS LOGIC ===============
-  // Open goals overlay for a project.
   const openGoalsOverlay = (projName) => {
     setActiveGoalsProj(projName);
   };
+
   const closeGoalsOverlay = () => {
     setActiveGoalsProj(null);
   };
-  // Add a goal for the active project.
+
   const addGoal = (goal) => {
     if (!activeGoalsProj) return;
     setGrid((prev) => {
@@ -263,7 +235,7 @@ export default function GridEditor({ minDate, maxDate }) {
       };
     });
   };
-  // Remove a goal by index from the active project.
+
   const removeGoal = (index) => {
     if (!activeGoalsProj) return;
     setGrid((prev) => {
@@ -279,7 +251,6 @@ export default function GridEditor({ minDate, maxDate }) {
       };
     });
   };
-  // ===========================================
 
   return (
     <div>
@@ -322,27 +293,39 @@ export default function GridEditor({ minDate, maxDate }) {
           </thead>
           <tbody>
             {days.map((day) => (
-              <tr key={day}>
-                <td>{day}</td>
-                {activeProjects.map((proj) => {
-                  const cellKey = `${day}_${proj.name}`;
-                  return (
-                    <td key={proj.name}>
-                      <textarea
-                        className="cell-textarea"
-                        value={grid.cells[cellKey] || ''}
-                        onChange={(e) => handleCellChange(day, proj.name, e.target.value)}
-                      />
+              <React.Fragment key={day}>
+                <tr>
+                  <td
+                    onClick={() => setExpandedDay(expandedDay === day ? null : day)}
+                    style={{ cursor: 'pointer' }}
+                  >
+                    {day} {expandedDay === day ? '[-]' : '[+]'}
+                  </td>
+                  {activeProjects.map((proj) => {
+                    const cellKey = `${day}_${proj.name}`;
+                    return (
+                      <td key={proj.name}>
+                        <textarea
+                          className="cell-textarea"
+                          value={grid.cells[cellKey] || ''}
+                          onChange={(e) => handleCellChange(day, proj.name, e.target.value)}
+                        />
+                      </td>
+                    );
+                  })}
+                </tr>
+                {expandedDay === day && (
+                  <tr>
+                    <td colSpan={activeProjects.length + 1}>
+                      <HourlyJournalInline day={day} />
                     </td>
-                  );
-                })}
-              </tr>
+                  </tr>
+                )}
+              </React.Fragment>
             ))}
           </tbody>
         </table>
       </div>
-
-      {/* Archived Projects Section */}
       <div className="grid-container" style={{ marginTop: '2rem' }}>
         <h3 style={{ textAlign: 'center' }}>Archived Projects</h3>
         {archivedProjects.length === 0 ? (
@@ -372,10 +355,7 @@ export default function GridEditor({ minDate, maxDate }) {
                     </button>
                   </td>
                   <td>
-                    <button
-                      onClick={() => openGoalsOverlay(proj.name)}
-                      className="action-button goals-project"
-                    >
+                    <button onClick={() => openGoalsOverlay(proj.name)} className="action-button goals-project">
                       <FaBullseye size={12} />
                     </button>
                   </td>
@@ -385,8 +365,6 @@ export default function GridEditor({ minDate, maxDate }) {
           </table>
         )}
       </div>
-
-      {/* Goals Overlay Modal */}
       {activeGoalsProj && (
         <GoalsOverlay
           project={activeGoalsProj}
@@ -396,6 +374,97 @@ export default function GridEditor({ minDate, maxDate }) {
           onRemoveGoal={removeGoal}
         />
       )}
+    </div>
+  );
+}
+
+// Inline Hourly Journal Component with Debounce Auto-Save
+function HourlyJournalInline({ day }) {
+  const [entries, setEntries] = useState({});
+  const [loading, setLoading] = useState(true);
+  const saveTimeoutRef = useRef(null);
+
+  useEffect(() => {
+    async function fetchEntries() {
+      try {
+        const loaded = await loadHourlyJournal(day);
+        if (loaded) {
+          setEntries(loaded);
+        } else {
+          const initial = {};
+          for (let i = 0; i < 24; i++) {
+            const hour = i.toString().padStart(2, '0');
+            initial[hour] = '';
+          }
+          setEntries(initial);
+        }
+      } catch (error) {
+        console.error("Error fetching hourly entries for", day, error);
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchEntries();
+  }, [day]);
+
+  // Debounce auto-save on entries change
+  useEffect(() => {
+    if (!loading) {
+      if (saveTimeoutRef.current) {
+        clearTimeout(saveTimeoutRef.current);
+      }
+      saveTimeoutRef.current = setTimeout(async () => {
+        try {
+          await saveHourlyJournal(day, entries);
+          console.log("Auto-saved hourly journal for", day);
+        } catch (error) {
+          console.error("Error auto-saving hourly journal for", day, error);
+        }
+      }, 1000); // 1-second debounce delay
+    }
+    return () => {
+      if (saveTimeoutRef.current) {
+        clearTimeout(saveTimeoutRef.current);
+      }
+    };
+  }, [entries, day, loading]);
+
+  if (loading) return <div>Loading hourly journal...</div>;
+
+  return (
+    <div style={{
+      padding: '1rem',
+      background: '#f7f7f7',
+      borderRadius: '8px',
+      marginTop: '1rem'
+    }}>
+      <h4 style={{ marginBottom: '0.5rem' }}>Hourly Journal for {day}</h4>
+      <div style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(auto-fit, minmax(100px, 1fr))',
+        gap: '0.5rem'
+      }}>
+        {Array.from({ length: 24 }, (_, i) => {
+          const hour = i.toString().padStart(2, '0');
+          return (
+            <div key={hour} style={{ display: 'flex', flexDirection: 'column' }}>
+              <label style={{ fontSize: '0.9rem', marginBottom: '0.25rem' }}>{hour}:00</label>
+              <textarea
+                value={entries[hour] || ''}
+                onChange={(e) =>
+                  setEntries((prev) => ({ ...prev, [hour]: e.target.value }))
+                }
+                placeholder="Write..."
+                style={{
+                  minHeight: '50px',
+                  padding: '0.5rem',
+                  fontSize: '0.9rem'
+                }}
+              />
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }

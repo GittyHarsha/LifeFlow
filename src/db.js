@@ -63,3 +63,27 @@ export async function saveTasks(tasksData) {
     console.error("Error saving tasks:", error);
   }
 }
+
+export async function loadHourlyJournal(dateStr) {
+  try {
+    const db = await initDB();
+    const key = `hourly_${dateStr}`;
+    const record = await db.get(STORE_NAME, key);
+    console.log("loadHourlyJournal: record", record);
+    return record ? record.data : null;
+  } catch (error) {
+    console.error("Error loading hourly journal:", error);
+    return null;
+  }
+}
+
+export async function saveHourlyJournal(dateStr, journalData) {
+  try {
+    const db = await initDB();
+    const key = `hourly_${dateStr}`;
+    await db.put(STORE_NAME, { id: key, data: journalData });
+    console.log("saveHourlyJournal: journal saved for", dateStr, journalData);
+  } catch (error) {
+    console.error("Error saving hourly journal:", error);
+  }
+}
