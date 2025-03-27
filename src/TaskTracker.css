@@ -1,165 +1,172 @@
-/* TaskTracker.css */
-
-/* Wrapper centers the card in the viewport */
+/* Centers the card in the viewport */
 .tasktracker-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 80vh;
-    padding: 2rem;
-  }
-  
-  /* Main card container */
-  .tasktracker-container {
-    width: 100%;
-    max-width: 700px;
-    background-color: var(--tasktracker-bg, #fff);
-    color: var(--tasktracker-text, #333);
-    border-radius: 12px;
-    box-shadow: 0 8px 16px rgba(0,0,0,0.15);
-    padding: 2rem;
-    transition: background-color 0.3s ease, color 0.3s ease;
-  }
-  
-  /* Title and subtitle */
-  .tasktracker-title {
-    font-size: 2rem;
-    font-weight: bold;
-    margin-bottom: 0.5rem;
-    text-align: center;
-  }
-  
-  .tasktracker-subtitle {
-    font-size: 1rem;
-    margin-bottom: 1.5rem;
-    text-align: center;
-    opacity: 0.8;
-  }
-  
-  /* Form styling */
-  .tasktracker-form {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    margin-bottom: 2rem;
-    justify-content: center;
-  }
-  
-  .tasktracker-input {
-    flex: 1 1 180px;
-    padding: 0.8rem 1rem;
-    border: 1px solid var(--tasktracker-border, #ddd);
-    border-radius: 8px;
-    font-size: 1rem;
-    background-color: var(--tasktracker-input-bg, #f9f9f9);
-    color: var(--tasktracker-input-text, #333);
-    transition: border-color 0.3s;
-  }
-  
-  .tasktracker-input:focus {
-    border-color: var(--tasktracker-focus, #6200ee);
-    outline: none;
-  }
-  
-  .tasktracker-add-btn {
-    padding: 0.8rem 1.5rem;
-    border: none;
-    border-radius: 8px;
-    background-color: var(--tasktracker-btn-bg, #6200ee);
-    color: var(--tasktracker-btn-text, #fff);
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    white-space: nowrap;
-  }
-  
-  .tasktracker-add-btn:hover {
-    background-color: var(--tasktracker-btn-hover, #4500b6);
-  }
-  
-  .tasktracker-no-tasks {
-    text-align: center;
-    font-size: 1rem;
-    margin-top: 1rem;
-    opacity: 0.7;
-  }
-  
-  /* Task list styles */
-  .tasktracker-list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-  
-  .tasktracker-item {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1rem;
-    margin-bottom: 1rem;
-    border: 1px solid var(--tasktracker-border, #ddd);
-    border-radius: 8px;
-    background-color: var(--tasktracker-item-bg, #fefefe);
-    transition: background-color 0.3s, transform 0.2s;
-  }
-  
-  .tasktracker-item:hover {
-    transform: translateY(-2px);
-  }
-  
-  .tasktracker-item.overdue {
-    background-color: var(--tasktracker-overdue-bg, #ffebeb);
-  }
-  
-  .tasktracker-item.due-soon {
-    background-color: var(--tasktracker-due-bg, #fff8e1);
-  }
-  
-  .tasktracker-item.completed {
-    opacity: 0.6;
-    text-decoration: line-through;
-  }
-  
-  .tasktracker-item-left {
-    display: flex;
-    align-items: center;
-    flex: 1;
-  }
-  
-  .tasktracker-checkbox {
-    margin-right: 1rem;
-    width: 24px;
-    height: 24px;
-    cursor: pointer;
-  }
-  
-  .tasktracker-details {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .tasktracker-text {
-    font-weight: bold;
-    font-size: 1.1rem;
-    margin-bottom: 0.3rem;
-  }
-  
-  .tasktracker-meta {
-    font-size: 0.9rem;
-    opacity: 0.8;
-  }
-  
-  .tasktracker-delete-btn {
-    padding: 0.5rem 1rem;
-    border: none;
-    border-radius: 8px;
-    background-color: var(--tasktracker-delete-bg, #d32f2f);
-    color: var(--tasktracker-delete-text, #fff);
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .tasktracker-delete-btn:hover {
-    background-color: var(--tasktracker-delete-hover, #b71c1c);
-  }
-  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  padding: 2rem;
+  /* no forced background or color here; it inherits from the body or theme */
+}
+
+/* Main card container */
+.tasktracker-container {
+  width: 100%;
+  max-width: 700px;
+  background: inherit;    /* Inherit from theme */
+  color: inherit;         /* Inherit text color from theme */
+  border: 1px solid currentColor;  /* If you want a subtle border around the container */
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+  padding: 2rem;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Title and subtitle */
+.tasktracker-title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.tasktracker-subtitle {
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  opacity: 0.8;
+}
+
+/* Form styling */
+.tasktracker-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  justify-content: center;
+}
+
+.tasktracker-input {
+  flex: 1 1 180px;
+  padding: 0.8rem 1rem;
+  /* Use currentColor for the border so it matches the theme text color */
+  border: 1px solid currentColor;
+  border-radius: 8px;
+  font-size: 1rem;
+  background: inherit;   /* inherit theme background */
+  color: inherit;        /* inherit theme text color */
+  box-sizing: border-box;
+  transition: border-color 0.3s;
+}
+
+.tasktracker-input:focus {
+  border-color: currentColor;
+  outline: none;
+}
+
+.tasktracker-add-btn {
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  background-color: currentColor; /* or use a theme variable, or inherit */
+  color: inherit;                 /* if you want the text to match the theme color */
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  white-space: nowrap;
+}
+
+.tasktracker-add-btn:hover {
+  /* Slightly darken or lighten? 
+     If you want a different effect, define a var or custom color. */
+  filter: brightness(0.9);
+}
+
+/* If no tasks */
+.tasktracker-no-tasks {
+  text-align: center;
+  font-size: 1rem;
+  margin-top: 1rem;
+  opacity: 0.7;
+}
+
+/* Task list styles */
+.tasktracker-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.tasktracker-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid currentColor;
+  border-radius: 8px;
+  background: inherit; 
+  color: inherit;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.tasktracker-item:hover {
+  transform: translateY(-2px);
+}
+
+/* Overdue or soon tasks can override background if you want tinted color: */
+.tasktracker-item.overdue {
+  background: #ffcccc; /* override with a tinted color if you want to highlight */
+}
+.tasktracker-item.due-soon {
+  background: #fff0b3; /* or another tinted color for “due soon” */
+}
+
+/* Completed tasks are partially transparent or line-through */
+.tasktracker-item.completed {
+  opacity: 0.6;
+  text-decoration: line-through;
+}
+
+.tasktracker-item-left {
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+.tasktracker-checkbox {
+  margin-right: 1rem;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+
+.tasktracker-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.tasktracker-text {
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-bottom: 0.3rem;
+}
+
+.tasktracker-meta {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+/* Delete button for tasks */
+.tasktracker-delete-btn {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 8px;
+  background-color: currentColor;
+  color: inherit;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.tasktracker-delete-btn:hover {
+  filter: brightness(0.9);
+}

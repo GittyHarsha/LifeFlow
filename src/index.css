@@ -1718,3 +1718,52 @@ th.project-header:hover .archive-project {
   scrollbar-color: #2193b0 #a0d8ef;
   scrollbar-width: thin;
 }
+
+/* The parent container for each hour block */
+.hour-block {
+  display: inline-flex;       /* or flex if you want a row or column layout */
+  flex-direction: column;     /* label on top, textarea below */
+  justify-content: flex-start;
+  align-items: stretch;
+  
+  /* Make sure box-sizing includes padding/border in the width/height */
+  box-sizing: border-box;
+
+  /* The visible border & optional styling */
+  border: 1px solid currentColor; 
+  border-radius: 4px;
+  
+  /* Let it inherit theme background & text color from parent */
+  background: inherit;
+  color: inherit;
+
+  /* Some padding inside the container so the textarea isn't on the edge */
+  padding: 0.5rem;
+  margin: 0.5rem 0; /* optional vertical spacing between blocks */
+}
+
+/* The label for the hour */
+.hour-block label {
+  font-size: 0.9rem;
+  margin-bottom: 0.25rem;
+}
+
+/* The textarea is fully inside the parent, with no extra border */
+.hour-block textarea {
+  box-sizing: border-box;  /* ensures padding fits inside width */
+  width: 100%;
+  min-height: 50px;
+  resize: vertical;
+
+  /* No border, so it looks “inside” the parent box */
+  border: none;
+  outline: none;
+
+  /* Match theme */
+  background: inherit;
+  color: inherit;
+
+  /* Spacing inside the textarea */
+  padding: 0.5rem;
+  font-size: 0.9rem;
+}

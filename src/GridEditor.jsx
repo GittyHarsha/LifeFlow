@@ -326,6 +326,7 @@ export default function GridEditor({ minDate, maxDate }) {
           </tbody>
         </table>
       </div>
+
       <div className="grid-container" style={{ marginTop: '2rem' }}>
         <h3 style={{ textAlign: 'center' }}>Archived Projects</h3>
         {archivedProjects.length === 0 ? (
@@ -365,6 +366,7 @@ export default function GridEditor({ minDate, maxDate }) {
           </table>
         )}
       </div>
+
       {activeGoalsProj && (
         <GoalsOverlay
           project={activeGoalsProj}
@@ -378,7 +380,8 @@ export default function GridEditor({ minDate, maxDate }) {
   );
 }
 
-// Inline Hourly Journal Component with Debounce Auto-Save
+// ---------- HourlyJournalInline with CSS classes instead of inline styles ----------
+
 function HourlyJournalInline({ day }) {
   const [entries, setEntries] = useState({});
   const [loading, setLoading] = useState(true);
@@ -391,6 +394,7 @@ function HourlyJournalInline({ day }) {
         if (loaded) {
           setEntries(loaded);
         } else {
+          // If no data, create an empty object for 24 hours
           const initial = {};
           for (let i = 0; i < 24; i++) {
             const hour = i.toString().padStart(2, '0');
@@ -420,7 +424,7 @@ function HourlyJournalInline({ day }) {
         } catch (error) {
           console.error("Error auto-saving hourly journal for", day, error);
         }
-      }, 1000); // 1-second debounce delay
+      }, 1000); // 1-second debounce
     }
     return () => {
       if (saveTimeoutRef.current) {
@@ -429,37 +433,25 @@ function HourlyJournalInline({ day }) {
     };
   }, [entries, day, loading]);
 
-  if (loading) return <div>Loading hourly journal...</div>;
+  if (loading) {
+    return <div>Loading hourly journal...</div>;
+  }
 
   return (
-    <div style={{
-      padding: '1rem',
-      background: '#f7f7f7',
-      borderRadius: '8px',
-      marginTop: '1rem'
-    }}>
-      <h4 style={{ marginBottom: '0.5rem' }}>Hourly Journal for {day}</h4>
-      <div style={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(100px, 1fr))',
-        gap: '0.5rem'
-      }}>
+    <div className="hourly-journal-inline">
+      <h4>Hourly Journal for {day}</h4>
+      <div className="hourly-journal-grid">
         {Array.from({ length: 24 }, (_, i) => {
           const hour = i.toString().padStart(2, '0');
           return (
-            <div key={hour} style={{ display: 'flex', flexDirection: 'column' }}>
-              <label style={{ fontSize: '0.9rem', marginBottom: '0.25rem' }}>{hour}:00</label>
+            <div key={hour} className="hour-block">
+              <label className="hour-label">{hour}:00</label>
               <textarea
                 value={entries[hour] || ''}
                 onChange={(e) =>
                   setEntries((prev) => ({ ...prev, [hour]: e.target.value }))
                 }
                 placeholder="Write..."
-                style={{
-                  minHeight: '50px',
-                  padding: '0.5rem',
-                  fontSize: '0.9rem'
-                }}
               />
             </div>
           );
@@ -468,3 +460,4 @@ function HourlyJournalInline({ day }) {
     </div>
   );
 }
+

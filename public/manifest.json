@@ -4,10 +4,18 @@
     "version": "1.0",
     "description": "A grid-based life tracker with themes, archiving, and goals.",
     "permissions": [
-      "storage"
+      "storage",
+      "identity"
     ],
     "chrome_url_overrides": {
       "newtab": "index.html"
-    }
+    },
+    "background": {
+      "service_worker": "background.js"
+    },
+    "host_permissions": [
+      "https://*.googleapis.com/", 
+      "https://accounts.google.com/"
+    ]
   }
   

@@ -6,6 +6,8 @@ import ExportImport from './ExportImport';
 import TaskTracker from './TaskTracker'; // New task tracker component
 import { loadGrid } from './db';
 import './index.css';
+import PomodoroTimer from './PomodoroTimer';
+
 
 const themes = [
   'material',
@@ -54,6 +56,8 @@ function App() {
         <button onClick={() => setActiveFeature("journal")}>Journal</button>
         <button onClick={() => setActiveFeature("tasks")}>Task Tracker</button>
         <button onClick={cycleTheme}>Switch Theme</button>
+        <button onClick={() => setActiveFeature("pomodoro")}>Pomodoro Timer</button>
+
         <p>Current Theme: {themes[themeIndex]}</p>
       </header>
       {activeFeature === "journal" && (
@@ -64,6 +68,9 @@ function App() {
         </>
       )}
       {activeFeature === "tasks" && <TaskTracker />}
+      {activeFeature === "pomodoro" && <PomodoroTimer />}
+
+
     </div>
   );
 }

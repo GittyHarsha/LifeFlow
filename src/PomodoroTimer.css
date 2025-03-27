@@ -1,0 +1,83 @@
+/* PomodoroTimer.css */
+
+/* Container */
+.pomodoro-container {
+  max-width: 400px;
+  margin: 2rem auto;
+  padding: 2rem;
+  /* Inherit background and text color from the theme */
+  background: inherit;
+  color: inherit;
+  /* Optional border if you want a subtle outline:
+     border: 1px solid currentColor; */
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.pomodoro-title {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+/* The large countdown display */
+.pomodoro-display {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+}
+
+/* The row of controls (start/pause/reset) */
+.pomodoro-controls {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Pomodoro buttons */
+.pomodoro-btn {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  /* Use currentColor if you want the button to match the text color,
+     or define a separate variable if you want a consistent button color. */
+  background-color: currentColor;
+  color: inherit; /* So text inherits theme color if desired */
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.pomodoro-btn:hover {
+  /* Slightly dim or lighten the color on hover */
+  filter: brightness(0.9);
+}
+
+/* The session selector row (Work / Short Break / Long Break) */
+.pomodoro-session {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1rem;
+}
+
+/* The <select> for session type */
+.pomodoro-session select {
+  padding: 0.5rem;
+  border-radius: 4px;
+  /* Use currentColor for border to match theme color */
+  border: 1px solid currentColor;
+  background: inherit;
+  color: inherit;
+  outline: none;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: border-color 0.3s;
+}
+
+.pomodoro-session select:focus {
+  border-color: currentColor;
+}
