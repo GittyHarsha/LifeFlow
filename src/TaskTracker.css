@@ -5,16 +5,16 @@
   align-items: center;
   min-height: 80vh;
   padding: 2rem;
-  /* no forced background or color here; it inherits from the body or theme */
+  /* No forced background; inherits from the theme/body */
 }
 
 /* Main card container */
 .tasktracker-container {
   width: 100%;
   max-width: 700px;
-  background: inherit;    /* Inherit from theme */
-  color: inherit;         /* Inherit text color from theme */
-  border: 1px solid currentColor;  /* If you want a subtle border around the container */
+  background: inherit;         /* Inherit from theme */
+  color: inherit;              /* Inherit text color from theme */
+  border: 1px solid currentColor; /* Subtle border if you want a container boundary */
   border-radius: 12px;
   box-shadow: 0 8px 16px rgba(0,0,0,0.15);
   padding: 2rem;
@@ -48,12 +48,11 @@
 .tasktracker-input {
   flex: 1 1 180px;
   padding: 0.8rem 1rem;
-  /* Use currentColor for the border so it matches the theme text color */
-  border: 1px solid currentColor;
+  border: 1px solid currentColor; /* Use currentColor so it inherits theme text color */
   border-radius: 8px;
   font-size: 1rem;
-  background: inherit;   /* inherit theme background */
-  color: inherit;        /* inherit theme text color */
+  background: inherit;           /* Inherit background from theme */
+  color: inherit;                /* Inherit text color */
   box-sizing: border-box;
   transition: border-color 0.3s;
 }
@@ -67,21 +66,19 @@
   padding: 0.8rem 1.5rem;
   border: none;
   border-radius: 8px;
-  background-color: currentColor; /* or use a theme variable, or inherit */
-  color: inherit;                 /* if you want the text to match the theme color */
+  background-color: currentColor; /* Use the text color for a tinted button */
+  color: inherit;
   font-size: 1rem;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: filter 0.3s;
   white-space: nowrap;
 }
 
 .tasktracker-add-btn:hover {
-  /* Slightly darken or lighten? 
-     If you want a different effect, define a var or custom color. */
   filter: brightness(0.9);
 }
 
-/* If no tasks */
+/* If no tasks are present */
 .tasktracker-no-tasks {
   text-align: center;
   font-size: 1rem;
@@ -89,7 +86,7 @@
   opacity: 0.7;
 }
 
-/* Task list styles */
+/* Task list */
 .tasktracker-list {
   list-style: none;
   margin: 0;
@@ -104,7 +101,7 @@
   margin-bottom: 1rem;
   border: 1px solid currentColor;
   border-radius: 8px;
-  background: inherit; 
+  background: inherit;
   color: inherit;
   transition: background-color 0.3s, transform 0.2s;
 }
@@ -113,15 +110,16 @@
   transform: translateY(-2px);
 }
 
-/* Overdue or soon tasks can override background if you want tinted color: */
+/* Instead of forced pink/yellow, highlight overdue/due-soon with a border */
 .tasktracker-item.overdue {
-  background: #ffcccc; /* override with a tinted color if you want to highlight */
-}
-.tasktracker-item.due-soon {
-  background: #fff0b3; /* or another tinted color for “due soon” */
+  border: 2px solid red;        /* highlight overdue tasks in red border */
 }
 
-/* Completed tasks are partially transparent or line-through */
+.tasktracker-item.due-soon {
+  border: 2px solid orange;     /* highlight due-soon tasks in orange border */
+}
+
+/* If tasks are completed, partially transparent or line-through */
 .tasktracker-item.completed {
   opacity: 0.6;
   text-decoration: line-through;
@@ -164,7 +162,7 @@
   background-color: currentColor;
   color: inherit;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: filter 0.3s;
 }
 
 .tasktracker-delete-btn:hover {
